@@ -16,9 +16,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./tagalog-translator # 👈 Replace with your exact subfolder name!
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,7 +23,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
       
       - name: Install dependencies
         run: npm install
@@ -42,7 +39,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './tagalog-translator/dist' # 👈 Point to dist inside subfolder!
+          path: './dist'
 
   deploy:
     environment:
